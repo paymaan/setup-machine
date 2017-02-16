@@ -19,7 +19,7 @@ sudo make install
 cd ~/git-repos/
 
 git clone https://github.com/paymaan/dotfiles.git
-cd ~git-repos/dotfiles
+cd ~/git-repos/dotfiles
 cp .* ~/
 
 
