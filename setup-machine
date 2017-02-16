@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# quick prototype
+
+sudo apt-get update
+
+sudo apt-get --assume-yes -install clang cmake emacs gcc git g++ tmux
+
+mkdir ~/git-repos/
+
+cd ~/git-repos/
+
+git clone https://github.com/thewtex/tmux-mem-cpu-load.git
+cd ~/git-repos/tmux-mem-cpu-load
+cmake .
+make
+sudo make install
+
+cd ~/git-repos/
+
+git clone https://github.com/paymaan/dotfiles.git
+cd ~git-repos/dotfiles
+cp .* ~/
+
+
+
