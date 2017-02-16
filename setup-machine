@@ -4,7 +4,7 @@
 
 sudo apt-get update
 
-sudo apt-get --assume-yes -install clang cmake emacs gcc git g++ tmux
+sudo apt-get --assume-yes install clang cmake emacs gcc git g++ tmux
 
 mkdir ~/git-repos/
 
