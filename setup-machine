@@ -10,6 +10,7 @@ mkdir ~/git-repos/
 
 cd ~/git-repos/
 
+# todo: check if directory exists
 git clone https://github.com/thewtex/tmux-mem-cpu-load.git
 cd ~/git-repos/tmux-mem-cpu-load
 cmake .
@@ -18,9 +19,14 @@ sudo make install
 
 cd ~/git-repos/
 
+# todo: check if directory exists
 git clone https://github.com/paymaan/dotfiles.git
 cd ~/git-repos/dotfiles
 cp .* ~/
+
+# todo: create a DOT artifacts directory for setup-machine which has
+# the log text file; pipe all command outputs in this script to
+# that log file instead of stdout
 
 
 
