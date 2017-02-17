@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variables
-callerDir="$(pwd)"
+scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 artifactsPath=~/.setup-machine-artifacts
 fileStamp="$(date +%Y_%m_%d_at_%Hhr_%Mmin_%Ssec)"
 logFilePath_stdOut=${artifactsPath}/log_stdout_${fileStamp}.txt
@@ -13,7 +13,7 @@ if ! [[ -f "$artifactsPath" ]]; then
 fi
 
 # Call setup-machine-impl and log output
-/bin/bash ${callerDir}/setup-machine-impl \
+/bin/bash ${scriptDir}/setup-machine-impl \
 	   > $logFilePath_stdOut \
 	  2> $logFilePath_stdErr
 
