@@ -1,38 +1,18 @@
 #!/bin/bash
 
-# Root directory for all git repos
-gitReposPath=~/git-repos
-if ! [[ -f "$gitReposPath" ]]; then
-    mkdir -p $gitReposPath
-fi
+# Variables
+callerDir="$(pwd)"
+artifactsPath=~/.setup-machine-artifacts
+fileStamp="$(date +%Y_%m_%d_at_%{H}hr_%{M}min_%{S}sec)"
+logFilePath_stdOut=${artifactsPath}/log_stdout_${fileStamp}.txt
+logFilePath_stdErr=${artifactsPath}/log_stderr_${fileStamp}.txt
 
-# apt-get packages and install
-sudo apt-get update
-sudo apt-get --assume-yes install clang cmake emacs gcc git g++ tmux
+# Call setup-machine-impl and log output to a file
+/bin/bash ${callerDir}/setup-machine-impl \
+	  >! $logFilePath_stdOut \
+	 2>! $logFilePath_stdErr
 
-# install tmux-mem-cpu-load (tmcl)
-tmclRepoPath=$gitReposPath/tmux-mem-cpu-load
-if ! [[ -f "$tmclRepoPath" ]]; then
-    mkdir -p $tmclRepoPath
-    cd $tmclRepoPath && \
-	git clone https://github.com/thewtex/tmux-mem-cpu-load.git . && \
-	cmake . && \
-	make && \
-	sudo make install && \
-    cd -
-fi
+# cat error log to stdout
+cat $logFilePath_stdErr
 
-# setup dotfiles
-dotFilesRepoPath=$gitReposPath/dotfiles
-if ! [[ -f "$dotFilesRepoPath" ]]; then
-    mkdir -p $dotFilesRepoPath
-    cd $dotFilesRepoPath && \
-	git clone https://github.com/paymaan/dotfiles.git . && \
-	#cp .* ~/
-	ln -sb .* .
-    cd -
-fi
-
-# todo: create a DOT artifacts directory for setup-machine which has
-# the log text file; pipe all command outputs in this script to
-# that log file instead of stdout
+exit 0

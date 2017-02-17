@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Root directory for all git repos
+gitReposPath=~/git-repos
+if ! [[ -f "$gitReposPath" ]]; then
+    mkdir -p $gitReposPath
+fi
+
+# apt-get packages and install
+sudo apt-get update
+sudo apt-get --assume-yes install clang cmake emacs gcc git g++ tmux
+
+# install tmux-mem-cpu-load (tmcl)
+tmclRepoPath=$gitReposPath/tmux-mem-cpu-load
+if ! [[ -f "$tmclRepoPath" ]]; then
+    mkdir -p $tmclRepoPath
+    cd $tmclRepoPath && \
+	git clone https://github.com/thewtex/tmux-mem-cpu-load.git . && \
+	cmake . && \
+	make && \
+	sudo make install && \
+    cd -
+fi
+
+# download and copy dotfiles to ~/
+dotFilesRepoPath=$gitReposPath/dotfiles
+if ! [[ -f "$dotFilesRepoPath" ]]; then
+    mkdir -p $dotFilesRepoPath
+    cd $dotFilesRepoPath && \
+	git clone https://github.com/paymaan/dotfiles.git . && \
+        # cp and make backup if overwriting
+	/bin/cp -fb .* ~/ && \
+    cd -
+fi
+
+exit 0
