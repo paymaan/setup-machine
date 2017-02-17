@@ -3,9 +3,15 @@
 # Variables
 callerDir="$(pwd)"
 artifactsPath=~/.setup-machine-artifacts
-fileStamp="$(date +%Y_%m_%d_at_%{H}hr_%{M}min_%{S}sec)"
+fileStamp="$(date +%Y_%m_%d_at_%Hhr_%Mmin_%Ssec)"
 logFilePath_stdOut=${artifactsPath}/log_stdout_${fileStamp}.txt
 logFilePath_stdErr=${artifactsPath}/log_stderr_${fileStamp}.txt
+
+# Create the artifacts directory if it doesn't exist already
+if ! [[ -f "$artifactsPath" ]]; then
+    mkdir -p $artifactsPath
+fi
+
 
 # Call setup-machine-impl and log output to a file
 /bin/bash ${callerDir}/setup-machine-impl \
