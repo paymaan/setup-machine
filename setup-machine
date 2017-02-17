@@ -12,11 +12,10 @@ if ! [[ -f "$artifactsPath" ]]; then
     mkdir -p $artifactsPath
 fi
 
-
-# Call setup-machine-impl and log output to a file
+# Call setup-machine-impl and log output
 /bin/bash ${callerDir}/setup-machine-impl \
-	  >! $logFilePath_stdOut \
-	 2>! $logFilePath_stdErr
+	   > $logFilePath_stdOut \
+	  2> $logFilePath_stdErr
 
 # cat error log to stdout
 cat $logFilePath_stdErr
