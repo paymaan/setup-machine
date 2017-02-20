@@ -11,14 +11,15 @@ sudo apt-get update
 sudo apt-get --assume-yes install clang cmake emacs gcc git g++ silversearcher-ag tmux
 
 # install tmux-mem-cpu-load (tmcl)
+# https://github.com/thewtex/tmux-mem-cpu-load
 tmclRepoPath=$gitReposPath/tmux-mem-cpu-load
 if ! [[ -f "$tmclRepoPath" ]]; then
     mkdir -p $tmclRepoPath
-    cd $tmclRepoPath && \
-	git clone https://github.com/thewtex/tmux-mem-cpu-load.git . && \
-	cmake . && \
-	make && \
-	sudo make install && \
+    cd $tmclRepoPath 
+	git clone https://github.com/thewtex/tmux-mem-cpu-load.git . 
+	cmake . 
+	make 
+	sudo make install 
     cd -
 fi
 
@@ -30,16 +31,16 @@ fi
 #    git clone ...
 # fi
 # because new instances will never have these
-# even if they do, error lag will catch them
-cd $gitReposPath && \
+# even if they do, error log will catch them
+cd $gitReposPath 
     # https://github.com/aspiers/smooth-scrolling
-    git clone https://github.com/aspiers/smooth-scrolling.git && \
+    git clone https://github.com/aspiers/smooth-scrolling.git 
     # https://github.com/emacs-helm/helm
-    git clone https://github.com/emacs-helm/helm.git && \
+    git clone https://github.com/emacs-helm/helm.git 
     # https://github.com/jwiegley/emacs-async
-    git clone https://github.com/jwiegley/emacs-async && \
+    git clone https://github.com/jwiegley/emacs-async 
     # https://github.com/syohex/emacs-helm-ag
-    git clone https://github.com/syohex/emacs-helm-ag.git && \
+    git clone https://github.com/syohex/emacs-helm-ag.git 
 cd -
 
 # install helm
@@ -51,10 +52,10 @@ cd -
 dotFilesRepoPath=$gitReposPath/dotfiles
 if ! [[ -f "$dotFilesRepoPath" ]]; then
     mkdir -p $dotFilesRepoPath
-    cd $dotFilesRepoPath && \
-	git clone https://github.com/paymaan/dotfiles.git . && \
+    cd $dotFilesRepoPath 
+	git clone https://github.com/paymaan/dotfiles.git . 
         # cp and make backup if overwriting
-	/bin/cp -fb .* ~/ && \
+	/bin/cp -fb .* ~/ 
     cd -
 fi
 
