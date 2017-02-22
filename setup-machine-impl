@@ -10,7 +10,7 @@ fi
 sudo apt-get update
 sudo apt-get --assume-yes install \
      gcc g++ \
-     clang-3.8 lldb-3.8 libclang-common-3.8-dev libclang-3.8-dev libllvm3.8 llvm-3.8 llvm-3.8-dev llvm-3.8-runtime clang-format-3.8 python-clang-3.8 \
+     clang lldb-3.8 libclang-common-3.8-dev libclang-3.8-dev libllvm3.8 llvm-3.8 llvm-3.8-dev llvm-3.8-runtime clang-format-3.8 python-clang-3.8 \
      cmake \
      emacs \
      git \
