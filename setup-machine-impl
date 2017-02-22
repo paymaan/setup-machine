@@ -46,13 +46,27 @@ cd $gitReposPath
     # https://github.com/jwiegley/emacs-async
     git clone https://github.com/jwiegley/emacs-async 
     # https://github.com/syohex/emacs-helm-ag
-    git clone https://github.com/syohex/emacs-helm-ag.git 
+    git clone https://github.com/syohex/emacs-helm-ag.git
+    # https://github.com/Andersbakken/rtags
+    git clone --recursive https://github.com/Andersbakken/rtags.git
 cd -
 
 # install helm
+# https://github.com/emacs-helm/helm
 cd ${gitReposPath}/helm
     make
 cd -
+
+# install rtags
+# https://github.com/Andersbakken/rtags
+cd ${gitReposPath}/rtags
+    git submodule init
+    git submodule update
+    mkdir build && cd build
+    cmake ..
+    make
+    sudo make install # adds rdm, rc, rp to PATH
+cd ${gitReposPath}/rtags
 
 # download and copy dotfiles to ~/
 dotFilesRepoPath=$gitReposPath/dotfiles
