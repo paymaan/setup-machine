@@ -31,7 +31,7 @@ fi
 
 # clone repos from github; these are needed by things like
 # .emacs etc.
-# Not guarding "git clone" by:
+# Not guarding "git clone" commands by:
 # if ! [[ -f "$repoPath" ]]; then
 #    mkdir -p $repoPath
 #    git clone ...
