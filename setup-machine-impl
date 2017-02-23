@@ -14,11 +14,7 @@ sudo apt-get --assume-yes install \
      cmake \
      emacs \
      git \
-     silversearcher-ag tmux zlib1g-dev tree
-
-# start ssh-agent to manage keys and avoid entering passphrase
-# everytime for git push
-eval "$(ssh-agent -s)"
+     silversearcher-ag tmux zlib1g-dev tree htop
 
 # clone repos from github; these are needed by things like
 # .emacs etc.
