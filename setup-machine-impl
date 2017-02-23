@@ -14,7 +14,7 @@ sudo apt-get --assume-yes install \
      cmake \
      emacs \
      git \
-     silversearcher-ag tmux zlib1g-dev
+     silversearcher-ag tmux zlib1g-dev tree
 
 # install tmux-mem-cpu-load (tmcl)
 # https://github.com/thewtex/tmux-mem-cpu-load
