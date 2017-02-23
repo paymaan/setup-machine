@@ -16,18 +16,9 @@ sudo apt-get --assume-yes install \
      git \
      silversearcher-ag tmux zlib1g-dev tree
 
-# install tmux-mem-cpu-load (tmcl)
-# https://github.com/thewtex/tmux-mem-cpu-load
-tmclRepoPath=$gitReposPath/tmux-mem-cpu-load
-if ! [[ -f "$tmclRepoPath" ]]; then
-    mkdir -p $tmclRepoPath
-    cd $tmclRepoPath 
-	git clone git@github.com:thewtex/tmux-mem-cpu-load.git . 
-	cmake . 
-	make 
-	sudo make install 
-    cd -
-fi
+# start ssh-agent to manage keys and avoid entering passphrase
+# everytime for git push
+eval "$(ssh-agent -s)"
 
 # clone repos from github; these are needed by things like
 # .emacs etc.
@@ -40,16 +31,42 @@ fi
 # even if they do, error log will catch them
 cd $gitReposPath 
     # https://github.com/aspiers/smooth-scrolling
-    git clone git@github.com:aspiers/smooth-scrolling.git
+    git clone https://github.com/aspiers/smooth-scrolling
     # https://github.com/emacs-helm/helm
-    git clone git@github.com:emacs-helm/helm.git
+    git clone https://github.com/emacs-helm/helm
     # https://github.com/jwiegley/emacs-async
-    git clone git@github.com:jwiegley/emacs-async.git
+    git clone https://github.com/jwiegley/emacs-async
     # https://github.com/syohex/emacs-helm-ag
-    git clone git@github.com:syohex/emacs-helm-ag.git
+    git clone https://github.com/syohex/emacs-helm-ag
     # https://github.com/Andersbakken/rtags
-    git clone --recursive git@github.com:Andersbakken/rtags.git
+    git clone --recursive https://github.com/Andersbakken/rtags
 cd -
+
+# although initially clones were downloaded using https, set
+# up url for ssh so that later git push is seamless with keys
+# available
+cd $gitReposPath 
+    # https://github.com/aspiers/smooth-scrolling
+    cd smooth-scrolling
+    git remote set-url origin git@github.com:aspiers/smooth-scrolling.git
+    cd ..
+    # https://github.com/emacs-helm/helm
+    cd helm
+    git remote set-url origin git@github.com:emacs-helm/helm.git
+    cd ..
+    # https://github.com/jwiegley/emacs-async
+    cd emacs-async
+    git remote set-url origin git@github.com:jwiegley/emacs-async.git
+    cd ..
+    # https://github.com/syohex/emacs-helm-ag
+    cd emacs-helm-ag
+    git remote set-url origin git@github.com:syohex/emacs-helm-ag.git
+    cd ..
+    # https://github.com/Andersbakken/rtags
+    cd rtags
+    git remote set-url origin git@github.com:Andersbakken/rtags.git
+    cd ..
+cd $gitReposPath
 
 # install helm
 # https://github.com/emacs-helm/helm
@@ -68,16 +85,29 @@ cd ${gitReposPath}/rtags
     sudo make install # adds rdm, rc, rp to PATH
 cd ${gitReposPath}/rtags
 
-# start ssh-agent to manage keys and avoid entering passphrase
-# everytime for git push
-eval "$(ssh-agent -s)"
+# install tmux-mem-cpu-load (tmcl)
+# https://github.com/thewtex/tmux-mem-cpu-load
+tmclRepoPath=$gitReposPath/tmux-mem-cpu-load
+if ! [[ -f "$tmclRepoPath" ]]; then
+    mkdir -p $tmclRepoPath
+    cd $tmclRepoPath 
+        git clone https://github.com/thewtex/tmux-mem-cpu-load.git .
+	# setup repo to use ssh for seamless pushing later
+	git remote set-url origin git@github.com:thewtex/tmux-mem-cpu-load.git
+	cmake . 
+	make 
+	sudo make install 
+    cd -
+fi
 
 # download and copy dotfiles to ~/
 dotFilesRepoPath=$gitReposPath/dotfiles
 if ! [[ -f "$dotFilesRepoPath" ]]; then
     mkdir -p $dotFilesRepoPath
     cd $dotFilesRepoPath 
-	git clone git@github.com:paymaan/dotfiles.git . 
+        git clone https://github.com/paymaan/dotfiles.git .
+	# setup repo to use ssh for seamless pushing later
+	git remote set-url origin git@github.com:paymaan/dotfiles.git
         # cp and make backup if overwriting
 	/bin/cp -fb .* ~/ 
     cd -
