@@ -22,7 +22,7 @@ tmclRepoPath=$gitReposPath/tmux-mem-cpu-load
 if ! [[ -f "$tmclRepoPath" ]]; then
     mkdir -p $tmclRepoPath
     cd $tmclRepoPath 
-	git clone https://github.com/thewtex/tmux-mem-cpu-load.git . 
+	git clone git@github.com:thewtex/tmux-mem-cpu-load.git . 
 	cmake . 
 	make 
 	sudo make install 
@@ -40,15 +40,15 @@ fi
 # even if they do, error log will catch them
 cd $gitReposPath 
     # https://github.com/aspiers/smooth-scrolling
-    git clone https://github.com/aspiers/smooth-scrolling.git 
+    git clone git@github.com:aspiers/smooth-scrolling.git
     # https://github.com/emacs-helm/helm
-    git clone https://github.com/emacs-helm/helm.git 
+    git clone git@github.com:emacs-helm/helm.git
     # https://github.com/jwiegley/emacs-async
-    git clone https://github.com/jwiegley/emacs-async 
+    git clone git@github.com:jwiegley/emacs-async.git
     # https://github.com/syohex/emacs-helm-ag
-    git clone https://github.com/syohex/emacs-helm-ag.git
+    git clone git@github.com:syohex/emacs-helm-ag.git
     # https://github.com/Andersbakken/rtags
-    git clone --recursive https://github.com/Andersbakken/rtags.git
+    git clone --recursive git@github.com:Andersbakken/rtags.git
 cd -
 
 # install helm
@@ -77,7 +77,7 @@ dotFilesRepoPath=$gitReposPath/dotfiles
 if ! [[ -f "$dotFilesRepoPath" ]]; then
     mkdir -p $dotFilesRepoPath
     cd $dotFilesRepoPath 
-	git clone https://github.com/paymaan/dotfiles.git . 
+	git clone git@github.com:paymaan/dotfiles.git . 
         # cp and make backup if overwriting
 	/bin/cp -fb .* ~/ 
     cd -
