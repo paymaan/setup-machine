@@ -68,6 +68,10 @@ cd ${gitReposPath}/rtags
     sudo make install # adds rdm, rc, rp to PATH
 cd ${gitReposPath}/rtags
 
+# start ssh-agent to manage keys and avoid entering passphrase
+# everytime for git push
+eval "$(ssh-agent -s)"
+
 # download and copy dotfiles to ~/
 dotFilesRepoPath=$gitReposPath/dotfiles
 if ! [[ -f "$dotFilesRepoPath" ]]; then
