@@ -15,6 +15,7 @@ sudo apt-get --assume-yes install \
      emacs \
      git \
      ghc \
+     texlive-latex-base texlive-latex-extra \
      silversearcher-ag tmux zlib1g-dev tree htop
 
 # clone repos from github; these are needed by things like
