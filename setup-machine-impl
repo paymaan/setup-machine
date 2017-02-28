@@ -14,6 +14,7 @@ sudo apt-get --assume-yes install \
      cmake \
      emacs \
      git \
+     ghc \
      silversearcher-ag tmux zlib1g-dev tree htop
 
 # clone repos from github; these are needed by things like
