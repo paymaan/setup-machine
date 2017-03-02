@@ -40,6 +40,8 @@ cd $gitReposPath
     git clone --recursive https://github.com/Andersbakken/rtags
     # https://github.com/paymaan/tut-notes
     git clone https://github.com/paymaan/tut-notes.git
+    # https://github.com/paymaan/code-snippets.git
+    git clone https://github.com/paymaan/code-snippets.git
 cd -
 
 # although initially clones were downloaded using https, set
@@ -69,6 +71,10 @@ cd $gitReposPath
     # https://github.com/paymaan/tut-notes
     cd tut-notes
     git remote set-url origin git@github.com:paymaan/tut-notes.git
+    cd ..
+    # https://github.com/paymaan/code-snippets.git
+    cd code-snippets
+    git remote set-url origin git@github.com:paymaan/code-snippets.git
     cd ..
 cd $gitReposPath
 
