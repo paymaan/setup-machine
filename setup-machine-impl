@@ -18,6 +18,10 @@ sudo apt-get --assume-yes install \
      texlive-latex-base texlive-latex-extra python-pygments \
      silversearcher-ag tmux zlib1g-dev tree htop
 
+# create symlinks
+sudo ln -s /usr/bin/clang-format-3.8 /usr/bin/clang-format
+sudo ln -s /usr/bin/lldb-3.8 /usr/bin/lldb
+
 # clone repos from github; these are needed by things like
 # .emacs etc.
 # Not guarding "git clone" commands by:
