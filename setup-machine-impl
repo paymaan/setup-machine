@@ -88,17 +88,6 @@ cd ${gitReposPath}/helm
     make
 cd -
 
-# install rtags
-# https://github.com/Andersbakken/rtags
-cd ${gitReposPath}/rtags
-    git submodule init
-    git submodule update
-    mkdir build && cd build
-    cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1
-    make
-    sudo make install # adds rdm, rc, rp to PATH
-cd ${gitReposPath}/rtags
-
 # install tmux-mem-cpu-load (tmcl)
 # https://github.com/thewtex/tmux-mem-cpu-load
 tmclRepoPath=$gitReposPath/tmux-mem-cpu-load
@@ -126,5 +115,19 @@ if ! [[ -f "$dotFilesRepoPath" ]]; then
 	/bin/cp -fb .* ~/ 
     cd -
 fi
+
+echo "Initial config done..."
+
+# install rtags
+# https://github.com/Andersbakken/rtags
+cd ${gitReposPath}/rtags
+    git submodule init
+    git submodule update
+    mkdir build && cd build
+    cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+    make
+    sudo make install # adds rdm, rc, rp to PATH
+cd ${gitReposPath}/rtags
+
 
 exit 0
