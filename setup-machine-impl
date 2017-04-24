@@ -16,7 +16,7 @@ sudo apt-get --assume-yes install \
      git \
      ghc \
      texlive-latex-base texlive-latex-extra python-pygments \
-     silversearcher-ag tmux zlib1g-dev tree htop
+     silversearcher-ag tmux zlib1g-dev tree htop xclip
 
 # create symlinks
 sudo ln -s /usr/bin/clang-format-3.8 /usr/bin/clang-format
@@ -108,6 +108,10 @@ if ! [[ -f "$tmclRepoPath" ]]; then
 	sudo make install 
     cd -
 fi
+
+# install tmux package manager
+# https://github.com/tmux-plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # download and copy dotfiles to ~/
 dotFilesRepoPath=$gitReposPath/dotfiles
