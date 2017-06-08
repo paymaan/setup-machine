@@ -48,6 +48,8 @@ cd $gitReposPath
     git clone https://github.com/paymaan/code-snippets.git
     # https://github.com/paymaan/clmystery
     git clone https://github.com/paymaan/clmystery.git
+    # https://github.com/paymaan/lox-cpp
+    git clone https://github.com/paymaan/lox-cpp.git
 cd -
 
 # although initially clones were downloaded using https, set
@@ -85,6 +87,10 @@ cd $gitReposPath
     # https://github.com/paymaan/clmystery
     cd clmystery
     git remote set-url origin git@github.com:paymaan/clmystery.git
+    cd ..
+    # https://github.com/paymaan/lox-cpp
+    cd lox-cpp
+    git remote set-url origin git@github.com:paymaan/lox-cpp.git
     cd ..
 cd $gitReposPath
 
