@@ -16,7 +16,8 @@ sudo apt-get --assume-yes install \
      git \
      ghc \
      texlive-latex-base texlive-latex-extra python-pygments \
-     silversearcher-ag tmux zlib1g-dev tree htop xclip
+     silversearcher-ag tmux zlib1g-dev tree htop xclip \
+     ubuntu-desktop vnc4server gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
 
 # create symlinks
 sudo ln -s /usr/bin/clang-format-3.8 /usr/bin/clang-format
