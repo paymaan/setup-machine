@@ -129,7 +129,7 @@ if ! [[ -f "$dotFilesRepoPath" ]]; then
 	# setup repo to use ssh for seamless pushing later
 	git remote set-url origin git@github.com:paymaan/dotfiles.git
         # cp and make backup if overwriting
-	/bin/cp -fb .* ~/ 
+	/bin/cp -fbr .* ~/
     cd -
 fi
 
