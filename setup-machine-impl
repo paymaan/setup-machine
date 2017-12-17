@@ -43,14 +43,14 @@ cd $gitReposPath
     git clone https://github.com/syohex/emacs-helm-ag
     # https://github.com/Andersbakken/rtags
     git clone --recursive https://github.com/Andersbakken/rtags
-    # https://github.com/paymaan/tut-notes
-    git clone https://github.com/paymaan/tut-notes.git
-    # https://github.com/paymaan/code-snippets.git
-    git clone https://github.com/paymaan/code-snippets.git
-    # https://github.com/paymaan/clmystery
-    git clone https://github.com/paymaan/clmystery.git
-    # https://github.com/paymaan/lox-cpp
-    git clone https://github.com/paymaan/lox-cpp.git
+    # https://github.com/spraza/tut-notes
+    git clone https://github.com/spraza/tut-notes.git
+    # https://github.com/spraza/code-snippets.git
+    git clone https://github.com/spraza/code-snippets.git
+    # https://github.com/spraza/clmystery
+    git clone https://github.com/spraza/clmystery.git
+    # https://github.com/spraza/lox-cpp
+    git clone https://github.com/spraza/lox-cpp.git
 cd -
 
 # although initially clones were downloaded using https, set
@@ -77,21 +77,21 @@ cd $gitReposPath
     cd rtags
     git remote set-url origin git@github.com:Andersbakken/rtags.git
     cd ..
-    # https://github.com/paymaan/tut-notes
+    # https://github.com/spraza/tut-notes
     cd tut-notes
-    git remote set-url origin git@github.com:paymaan/tut-notes.git
+    git remote set-url origin git@github.com:spraza/tut-notes.git
     cd ..
-    # https://github.com/paymaan/code-snippets.git
+    # https://github.com/spraza/code-snippets.git
     cd code-snippets
-    git remote set-url origin git@github.com:paymaan/code-snippets.git
+    git remote set-url origin git@github.com:spraza/code-snippets.git
     cd ..
-    # https://github.com/paymaan/clmystery
+    # https://github.com/spraza/clmystery
     cd clmystery
-    git remote set-url origin git@github.com:paymaan/clmystery.git
+    git remote set-url origin git@github.com:spraza/clmystery.git
     cd ..
-    # https://github.com/paymaan/lox-cpp
+    # https://github.com/spraza/lox-cpp
     cd lox-cpp
-    git remote set-url origin git@github.com:paymaan/lox-cpp.git
+    git remote set-url origin git@github.com:spraza/lox-cpp.git
     cd ..
 cd $gitReposPath
 
@@ -125,9 +125,9 @@ dotFilesRepoPath=$gitReposPath/dotfiles
 if ! [[ -f "$dotFilesRepoPath" ]]; then
     mkdir -p $dotFilesRepoPath
     cd $dotFilesRepoPath 
-        git clone https://github.com/paymaan/dotfiles.git .
+        git clone https://github.com/spraza/dotfiles.git .
 	# setup repo to use ssh for seamless pushing later
-	git remote set-url origin git@github.com:paymaan/dotfiles.git
+	git remote set-url origin git@github.com:spraza/dotfiles.git
         # cp and make backup if overwriting
 	/bin/cp -fbr .* ~/
     cd -
