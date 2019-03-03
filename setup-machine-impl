@@ -17,8 +17,20 @@ sudo apt-get --assume-yes install \
      ghc \
      man-db \
      mosh \
+     automake build-essential pkg-config libevent-dev libncurses5-dev \
      texlive-latex-base texlive-latex-extra python-pygments \
-     silversearcher-ag tmux zlib1g-dev tree htop xclip
+     silversearcher-ag zlib1g-dev tree htop xclip
+
+# install tmux from source
+rm -fr /tmp/tmux
+git clone https://github.com/tmux/tmux.git /tmp/tmux
+cd /tmp/tmux
+git checkout master
+sh autogen.sh
+./configure && make
+sudo make install
+cd -
+rm -fr /tmp/tmux
 
 # create symlinks
 sudo ln -s /usr/bin/clang-format-3.8 /usr/bin/clang-format
