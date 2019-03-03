@@ -21,6 +21,5 @@ I've started using Digital Ocean. I decided to reuse my setup script to setup th
 - locally, run: `scp ~/.ssh/id_rsa* spraza@<rootIp>:~/.ssh/`
 - then ssh into droplet as spraza
 - then run: `mkdir code && cd code && git clone https://github.com/spraza/setup-machine.git`
-- then run: `sudo ./setup-machine/setup-machine`
-    - wait until installation is done (silent but logs present)
+- then run: `sudo ./setup-machine/setup-machine-impl`
 - that should be it! :)
