@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script is primarily used to setup Digital Ocean's droplet (instance).
+
 adduser spraza
 usermod -aG sudo spraza
 apt update
