@@ -1,27 +1,28 @@
 #!/bin/bash
 
 # Root directory for all git repos
-gitReposPath=~/git-repos
+gitReposPath=~/code/git-repos
 if ! [[ -f "$gitReposPath" ]]; then
     mkdir -p $gitReposPath
 fi
 
 # apt-get packages and install
-sudo apt-get update
-sudo apt-get --assume-yes install \
+apt-get update
+apt-get --assume-yes install \
      gcc g++ \
-     clang lldb-3.8 libclang-common-3.8-dev libclang-3.8-dev libllvm3.8 llvm-3.8 llvm-3.8-dev llvm-3.8-runtime clang-format-3.8 python-clang-3.8 \
+     clang \
      cmake \
      emacs \
      git \
      ghc \
+     man-db \
+     mosh \
      texlive-latex-base texlive-latex-extra python-pygments \
-     silversearcher-ag tmux zlib1g-dev tree htop xclip \
-     vnc4server gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
+     silversearcher-ag tmux zlib1g-dev tree htop xclip
 
 # create symlinks
-sudo ln -s /usr/bin/clang-format-3.8 /usr/bin/clang-format
-sudo ln -s /usr/bin/lldb-3.8 /usr/bin/lldb
+ln -s /usr/bin/clang-format-3.8 /usr/bin/clang-format
+ln -s /usr/bin/lldb-3.8 /usr/bin/lldb
 
 # clone repos from github; these are needed by things like
 # .emacs etc.
@@ -41,16 +42,8 @@ cd $gitReposPath
     git clone https://github.com/jwiegley/emacs-async
     # https://github.com/syohex/emacs-helm-ag
     git clone https://github.com/syohex/emacs-helm-ag
-    # https://github.com/Andersbakken/rtags
-    git clone --recursive https://github.com/Andersbakken/rtags
-    # https://github.com/spraza/tut-notes
-    git clone https://github.com/spraza/tut-notes.git
-    # https://github.com/spraza/code-snippets.git
-    git clone https://github.com/spraza/code-snippets.git
-    # https://github.com/spraza/clmystery
-    git clone https://github.com/spraza/clmystery.git
-    # https://github.com/spraza/lox-cpp
-    git clone https://github.com/spraza/lox-cpp.git
+    # # https://github.com/Andersbakken/rtags
+    # git clone --recursive https://github.com/Andersbakken/rtags
 cd -
 
 # although initially clones were downloaded using https, set
@@ -77,22 +70,6 @@ cd $gitReposPath
     cd rtags
     git remote set-url origin git@github.com:Andersbakken/rtags.git
     cd ..
-    # https://github.com/spraza/tut-notes
-    cd tut-notes
-    git remote set-url origin git@github.com:spraza/tut-notes.git
-    cd ..
-    # https://github.com/spraza/code-snippets.git
-    cd code-snippets
-    git remote set-url origin git@github.com:spraza/code-snippets.git
-    cd ..
-    # https://github.com/spraza/clmystery
-    cd clmystery
-    git remote set-url origin git@github.com:spraza/clmystery.git
-    cd ..
-    # https://github.com/spraza/lox-cpp
-    cd lox-cpp
-    git remote set-url origin git@github.com:spraza/lox-cpp.git
-    cd ..
 cd $gitReposPath
 
 # install helm
@@ -112,7 +89,7 @@ if ! [[ -f "$tmclRepoPath" ]]; then
 	git remote set-url origin git@github.com:thewtex/tmux-mem-cpu-load.git
 	cmake . 
 	make 
-	sudo make install 
+	make install 
     cd -
 fi
 
@@ -133,8 +110,6 @@ if ! [[ -f "$dotFilesRepoPath" ]]; then
     cd -
 fi
 
-echo "Initial config done..."
-
 # install rtags
 # https://github.com/Andersbakken/rtags
 # NOTE: This takes time so if needed, can be run manually or in
@@ -145,8 +120,9 @@ echo "Initial config done..."
 #     mkdir build && cd build
 #     cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1
 #     make
-#     sudo make install # adds rdm, rc, rp to PATH
+#     make install # adds rdm, rc, rp to PATH
 # cd ${gitReposPath}/rtags
 
+echo "Initial config done..."
 
 exit 0
