@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# # Root directory for all git repos
-# githubReposPath=~/code/github-repos
-# if ! [[ -f "$githubReposPath" ]]; then
-#     mkdir -p $githubReposPath
-# fi
+# Root directory for all git repos
+githubReposPath=~/code/github-repos
+if ! [[ -f "$githubReposPath" ]]; then
+    mkdir -p $githubReposPath
+fi
 
 # Root directory for all apps
 appsPath=~/apps
@@ -12,140 +12,139 @@ if ! [[ -f "$appsPath" ]]; then
     mkdir -p $appsPath
 fi
 
-# # apt-get packages and install
-# sudo apt-get update
-# sudo apt-get --assume-yes install \
-#      gcc g++ \
-#      clang \
-#      cmake \
-#      emacs \
-#      git \
-#      ghc \
-#      man-db \
-#      mosh \
-#      automake build-essential pkg-config libevent-dev libncurses5-dev \
-#      texlive-latex-base texlive-latex-extra python-pygments \
-#      silversearcher-ag zlib1g-dev tree htop xclip
+# apt-get packages and install
+sudo apt-get update
+sudo apt-get --assume-yes install \
+     gcc g++ \
+     clang \
+     cmake \
+     emacs \
+     git \
+     ghc \
+     man-db \
+     mosh \
+     automake build-essential pkg-config libevent-dev libncurses5-dev \
+     texlive-latex-base texlive-latex-extra python-pygments \
+     silversearcher-ag zlib1g-dev tree htop xclip
 
-# # install tmux from source
-# rm -fr /tmp/tmux
-# git clone https://github.com/tmux/tmux.git /tmp/tmux
-# cd /tmp/tmux
-# git checkout master
-# sh autogen.sh
-# ./configure && make
-# sudo make install
-# cd -
-# rm -fr /tmp/tmux
+# install tmux from source
+rm -fr /tmp/tmux
+git clone https://github.com/tmux/tmux.git /tmp/tmux
+cd /tmp/tmux
+git checkout master
+sh autogen.sh
+./configure && make
+sudo make install
+cd -
+rm -fr /tmp/tmux
 
-# # create symlinks
-# sudo ln -s /usr/bin/clang-format-3.8 /usr/bin/clang-format
-# sudo ln -s /usr/bin/lldb-3.8 /usr/bin/lldb
+# create symlinks
+sudo ln -s /usr/bin/clang-format-3.8 /usr/bin/clang-format
+sudo ln -s /usr/bin/lldb-3.8 /usr/bin/lldb
 
-# # clone repos from github; these are needed by things like
-# # .emacs etc.
-# # Not guarding "git clone" commands by:
-# # if ! [[ -f "$repoPath" ]]; then
-# #    mkdir -p $repoPath
-# #    git clone ...
-# # fi
-# # because new instances will never have these
-# # even if they do, error log will catch them
-# cd $githubReposPath 
-#     # https://github.com/aspiers/smooth-scrolling
-#     git clone https://github.com/aspiers/smooth-scrolling
-#     # https://github.com/emacs-helm/helm
-#     git clone https://github.com/emacs-helm/helm
-#     # https://github.com/jwiegley/emacs-async
-#     git clone https://github.com/jwiegley/emacs-async
-#     # https://github.com/syohex/emacs-helm-ag
-#     git clone https://github.com/syohex/emacs-helm-ag
-#     # # https://github.com/Andersbakken/rtags
-#     # git clone --recursive https://github.com/Andersbakken/rtags
-# cd -
+# clone repos from github; these are needed by things like
+# .emacs etc.
+# Not guarding "git clone" commands by:
+# if ! [[ -f "$repoPath" ]]; then
+#    mkdir -p $repoPath
+#    git clone ...
+# fi
+# because new instances will never have these
+# even if they do, error log will catch them
+cd $githubReposPath 
+    # https://github.com/aspiers/smooth-scrolling
+    git clone https://github.com/aspiers/smooth-scrolling
+    # https://github.com/emacs-helm/helm
+    git clone https://github.com/emacs-helm/helm
+    # https://github.com/jwiegley/emacs-async
+    git clone https://github.com/jwiegley/emacs-async
+    # https://github.com/syohex/emacs-helm-ag
+    git clone https://github.com/syohex/emacs-helm-ag
+    # # https://github.com/Andersbakken/rtags
+    # git clone --recursive https://github.com/Andersbakken/rtags
+cd -
 
-# # although initially clones were downloaded using https, set
-# # up url for ssh so that later git push is seamless with keys
-# # available
-# cd $githubReposPath 
-#     # https://github.com/aspiers/smooth-scrolling
-#     cd smooth-scrolling
-#     git remote set-url origin git@github.com:aspiers/smooth-scrolling.git
-#     cd ..
-#     # https://github.com/emacs-helm/helm
-#     cd helm
-#     git remote set-url origin git@github.com:emacs-helm/helm.git
-#     cd ..
-#     # https://github.com/jwiegley/emacs-async
-#     cd emacs-async
-#     git remote set-url origin git@github.com:jwiegley/emacs-async.git
-#     cd ..
-#     # https://github.com/syohex/emacs-helm-ag
-#     cd emacs-helm-ag
-#     git remote set-url origin git@github.com:syohex/emacs-helm-ag.git
-#     cd ..
-#     # https://github.com/Andersbakken/rtags
-#     cd rtags
-#     git remote set-url origin git@github.com:Andersbakken/rtags.git
-#     cd ..
-# cd $githubReposPath
+# although initially clones were downloaded using https, set
+# up url for ssh so that later git push is seamless with keys
+# available
+cd $githubReposPath 
+    # https://github.com/aspiers/smooth-scrolling
+    cd smooth-scrolling
+    git remote set-url origin git@github.com:aspiers/smooth-scrolling.git
+    cd ..
+    # https://github.com/emacs-helm/helm
+    cd helm
+    git remote set-url origin git@github.com:emacs-helm/helm.git
+    cd ..
+    # https://github.com/jwiegley/emacs-async
+    cd emacs-async
+    git remote set-url origin git@github.com:jwiegley/emacs-async.git
+    cd ..
+    # https://github.com/syohex/emacs-helm-ag
+    cd emacs-helm-ag
+    git remote set-url origin git@github.com:syohex/emacs-helm-ag.git
+    cd ..
+    # https://github.com/Andersbakken/rtags
+    cd rtags
+    git remote set-url origin git@github.com:Andersbakken/rtags.git
+    cd ..
+cd $githubReposPath
 
-# # install helm
-# # https://github.com/emacs-helm/helm
-# cd ${githubReposPath}/helm
+# install helm
+# https://github.com/emacs-helm/helm
+cd ${githubReposPath}/helm
+    make
+cd -
+
+# install tmux-mem-cpu-load (tmcl)
+# https://github.com/thewtex/tmux-mem-cpu-load
+tmclRepoPath=$githubReposPath/tmux-mem-cpu-load
+if ! [[ -f "$tmclRepoPath" ]]; then
+    mkdir -p $tmclRepoPath
+    cd $tmclRepoPath 
+        git clone https://github.com/thewtex/tmux-mem-cpu-load.git .
+	# setup repo to use ssh for seamless pushing later
+	git remote set-url origin git@github.com:thewtex/tmux-mem-cpu-load.git
+	cmake . 
+	make 
+	sudo make install 
+    cd -
+fi
+
+# install tmux package manager
+# https://github.com/tmux-plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# download and copy dotfiles to ~/
+dotFilesRepoPath=$githubReposPath/dotfiles
+if ! [[ -f "$dotFilesRepoPath" ]]; then
+    mkdir -p $dotFilesRepoPath
+    cd $dotFilesRepoPath 
+        git clone https://github.com/spraza/dotfiles.git .
+	# setup repo to use ssh for seamless pushing later
+	git remote set-url origin git@github.com:spraza/dotfiles.git
+        # cp and make backup if overwriting
+	/bin/cp -fbr .* ~/
+    cd -
+fi
+
+# install rtags
+# https://github.com/Andersbakken/rtags
+# NOTE: This takes time so if needed, can be run manually or in
+#       parallel once the instance is started.
+# cd ${githubReposPath}/rtags
+#     git submodule init
+#     git submodule update
+#     mkdir build && cd build
+#     cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1
 #     make
-# cd -
-
-# # install tmux-mem-cpu-load (tmcl)
-# # https://github.com/thewtex/tmux-mem-cpu-load
-# tmclRepoPath=$githubReposPath/tmux-mem-cpu-load
-# if ! [[ -f "$tmclRepoPath" ]]; then
-#     mkdir -p $tmclRepoPath
-#     cd $tmclRepoPath 
-#         git clone https://github.com/thewtex/tmux-mem-cpu-load.git .
-# 	# setup repo to use ssh for seamless pushing later
-# 	git remote set-url origin git@github.com:thewtex/tmux-mem-cpu-load.git
-# 	cmake . 
-# 	make 
-# 	sudo make install 
-#     cd -
-# fi
-
-# # install tmux package manager
-# # https://github.com/tmux-plugins/tpm
-# git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# # download and copy dotfiles to ~/
-# dotFilesRepoPath=$githubReposPath/dotfiles
-# if ! [[ -f "$dotFilesRepoPath" ]]; then
-#     mkdir -p $dotFilesRepoPath
-#     cd $dotFilesRepoPath 
-#         git clone https://github.com/spraza/dotfiles.git .
-# 	# setup repo to use ssh for seamless pushing later
-# 	git remote set-url origin git@github.com:spraza/dotfiles.git
-#         # cp and make backup if overwriting
-# 	/bin/cp -fbr .* ~/
-#     cd -
-# fi
-
-# # install rtags
-# # https://github.com/Andersbakken/rtags
-# # NOTE: This takes time so if needed, can be run manually or in
-# #       parallel once the instance is started.
-# # cd ${githubReposPath}/rtags
-# #     git submodule init
-# #     git submodule update
-# #     mkdir build && cd build
-# #     cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1
-# #     make
-# #     sudo make install # adds rdm, rc, rp to PATH
-# # cd ${githubReposPath}/rtags
+#     sudo make install # adds rdm, rc, rp to PATH
+# cd ${githubReposPath}/rtags
 
 # install go
 cd ${appsPath}
 wget https://dl.google.com/go/go1.12.linux-amd64.tar.gz
-tar -xvzf go1.12.linux-amd64.tar.gz
-sudo cp go/bin/* /usr/local/bin
+tar -C /usr/local -xzf ~/apps/go1.12.linux-amd64.tar.gz
 
 echo "Initial config done..."
 
