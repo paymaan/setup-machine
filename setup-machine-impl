@@ -143,8 +143,15 @@ fi
 
 # install go
 cd ${appsPath}
-wget https://dl.google.com/go/go1.12.linux-amd64.tar.gz
-tar -C /usr/local -xzf ~/apps/go1.12.linux-amd64.tar.gz
+wget https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_Linux-64bit.tar.gz
+tar -C /usr/local/bin -xzf ${appsPath}/hugo_0.54.0_Linux-64bit.tar.gz
+
+# install hugo
+cd $githubReposPath
+git clone https://github.com/gohugoio/hugo.git
+cd hugo
+go install --tags extended
+cd ~
 
 echo "Initial config done..."
 
