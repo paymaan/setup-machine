@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# adduser spraza
+# usermod -aG sudo spraza
+# apt update
+# apt install ufw
+# ufw allow OpenSSH
+# ufw allow mosh
+# ufw enable
+
+# /bin/cp -r ~/.ssh /home/spraza
+# chown -R spraza:spraza /home/spraza/.ssh
+
+# Copy ssh keys
+echo "You can copy your ssh keys to reuse them on the server.
+
+Syntax:
+
+scp <source> <destination>
+
+To copy a file from B to A while logged into B:
+
+scp ~/.ssh/id_rsa* spraza@<server_ip_addr>:~/.ssh/
+
+To copy a file from B to A while logged into A:
+
+scp spraza@<local_ip_addr>:~/.ssh/id_rsa* ~/.ssh/"
