@@ -5,6 +5,7 @@ usermod -aG sudo spraza
 apt update
 apt install ufw
 ufw allow OpenSSH
+apt --assume-yes install mosh
 ufw allow mosh
 ufw enable
 
