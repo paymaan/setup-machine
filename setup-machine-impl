@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Root directory for all git repos
-gitReposPath=~/code/git-repos
-if ! [[ -f "$gitReposPath" ]]; then
-    mkdir -p $gitReposPath
+githubReposPath=~/code/github-repos
+if ! [[ -f "$githubReposPath" ]]; then
+    mkdir -p $githubReposPath
 fi
 
 # apt-get packages and install
@@ -33,7 +33,7 @@ ln -s /usr/bin/lldb-3.8 /usr/bin/lldb
 # fi
 # because new instances will never have these
 # even if they do, error log will catch them
-cd $gitReposPath 
+cd $githubReposPath 
     # https://github.com/aspiers/smooth-scrolling
     git clone https://github.com/aspiers/smooth-scrolling
     # https://github.com/emacs-helm/helm
@@ -49,7 +49,7 @@ cd -
 # although initially clones were downloaded using https, set
 # up url for ssh so that later git push is seamless with keys
 # available
-cd $gitReposPath 
+cd $githubReposPath 
     # https://github.com/aspiers/smooth-scrolling
     cd smooth-scrolling
     git remote set-url origin git@github.com:aspiers/smooth-scrolling.git
@@ -70,17 +70,17 @@ cd $gitReposPath
     cd rtags
     git remote set-url origin git@github.com:Andersbakken/rtags.git
     cd ..
-cd $gitReposPath
+cd $githubReposPath
 
 # install helm
 # https://github.com/emacs-helm/helm
-cd ${gitReposPath}/helm
+cd ${githubReposPath}/helm
     make
 cd -
 
 # install tmux-mem-cpu-load (tmcl)
 # https://github.com/thewtex/tmux-mem-cpu-load
-tmclRepoPath=$gitReposPath/tmux-mem-cpu-load
+tmclRepoPath=$githubReposPath/tmux-mem-cpu-load
 if ! [[ -f "$tmclRepoPath" ]]; then
     mkdir -p $tmclRepoPath
     cd $tmclRepoPath 
@@ -98,7 +98,7 @@ fi
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # download and copy dotfiles to ~/
-dotFilesRepoPath=$gitReposPath/dotfiles
+dotFilesRepoPath=$githubReposPath/dotfiles
 if ! [[ -f "$dotFilesRepoPath" ]]; then
     mkdir -p $dotFilesRepoPath
     cd $dotFilesRepoPath 
@@ -114,14 +114,14 @@ fi
 # https://github.com/Andersbakken/rtags
 # NOTE: This takes time so if needed, can be run manually or in
 #       parallel once the instance is started.
-# cd ${gitReposPath}/rtags
+# cd ${githubReposPath}/rtags
 #     git submodule init
 #     git submodule update
 #     mkdir build && cd build
 #     cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1
 #     make
 #     make install # adds rdm, rc, rp to PATH
-# cd ${gitReposPath}/rtags
+# cd ${githubReposPath}/rtags
 
 echo "Initial config done..."
 
