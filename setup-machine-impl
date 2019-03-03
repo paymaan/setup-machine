@@ -7,8 +7,8 @@ if ! [[ -f "$githubReposPath" ]]; then
 fi
 
 # apt-get packages and install
-apt-get update
-apt-get --assume-yes install \
+sudo apt-get update
+sudo apt-get --assume-yes install \
      gcc g++ \
      clang \
      cmake \
@@ -21,8 +21,8 @@ apt-get --assume-yes install \
      silversearcher-ag tmux zlib1g-dev tree htop xclip
 
 # create symlinks
-ln -s /usr/bin/clang-format-3.8 /usr/bin/clang-format
-ln -s /usr/bin/lldb-3.8 /usr/bin/lldb
+sudo ln -s /usr/bin/clang-format-3.8 /usr/bin/clang-format
+sudo ln -s /usr/bin/lldb-3.8 /usr/bin/lldb
 
 # clone repos from github; these are needed by things like
 # .emacs etc.
@@ -89,7 +89,7 @@ if ! [[ -f "$tmclRepoPath" ]]; then
 	git remote set-url origin git@github.com:thewtex/tmux-mem-cpu-load.git
 	cmake . 
 	make 
-	make install 
+	sudo make install 
     cd -
 fi
 
@@ -120,7 +120,7 @@ fi
 #     mkdir build && cd build
 #     cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1
 #     make
-#     make install # adds rdm, rc, rp to PATH
+#     sudo make install # adds rdm, rc, rp to PATH
 # cd ${githubReposPath}/rtags
 
 echo "Initial config done..."
