@@ -62,6 +62,8 @@ cd $githubReposPath
     git clone https://github.com/syohex/emacs-helm-ag
     # # https://github.com/Andersbakken/rtags
     # git clone --recursive https://github.com/Andersbakken/rtags
+    # setup blog repository
+    git clone --recursive git@github.com:spraza/blog.git    
 cd -
 
 # although initially clones were downloaded using https, set
@@ -87,10 +89,6 @@ cd $githubReposPath
     # https://github.com/Andersbakken/rtags
     cd rtags
     git remote set-url origin git@github.com:Andersbakken/rtags.git
-    cd ..
-    # https://github.com/spraza/blog
-    cd blog
-    git remote set-url origin git@github.com:spraza/blog.git
     cd ..
 cd $githubReposPath
 
@@ -156,10 +154,7 @@ tar -C /usr/local -xzf {appsPath}/go1.12.linux-amd64.tar.gz
 # install hugo
 cd ${appsPath}
 wget https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_Linux-64bit.tar.gz
-tar -C /usr/local/bin -xzf ${appsPath}/hugo_0.54.0_Linux-64bit.tar.gz
-
-# setup blog repository
-git clone --recursive git@github.com:spraza/blog.git
+sudo tar -C /usr/local/bin -xzf ${appsPath}/hugo_0.54.0_Linux-64bit.tar.gz
 
 echo "Initial config done..."
 
