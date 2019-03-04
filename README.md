@@ -19,7 +19,8 @@ I've started using Digital Ocean. I decided to reuse my setup script to setup th
 - locally, run: `scp ~/.ssh/id_rsa* spraza@<rootIp>:~/.ssh/`
 - then ssh into droplet as spraza
 - then run: `mkdir code && cd code && git clone https://github.com/spraza/setup-machine.git && ~/code/setup-machine/setup-machine-impl`
-- that should be it! :)
+- exit the droplet instance and ssh back
 
 In order to start the webserver for my blog/website, run: 
 - `~/code/setup-machine/start-website`
+- in a separate tmux pane, run: `cd ~/code/github-repos/blog && eval $(ssh-agent) && git pull origin master && watch -n 15 git pull origin master`
