@@ -149,7 +149,7 @@ eval $(ssh-agent)
 # install go
 cd ${appsPath}
 wget https://dl.google.com/go/go1.12.linux-amd64.tar.gz
-tar -C /usr/local -xzf {appsPath}/go1.12.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf {appsPath}/go1.12.linux-amd64.tar.gz
 
 # install hugo
 cd ${appsPath}
