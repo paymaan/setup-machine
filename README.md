@@ -13,9 +13,7 @@ I've started using Digital Ocean. I decided to reuse my setup script to setup th
 
 - Create new droplet (debian, mba ssh keys)
 - ssh into droplet as root
-- run: `apt update && apt install --assume-yes git`
-- run: `mkdir code && cd code && git clone https://github.com/spraza/setup-machine.git`
-- run: `./setup-machine/setup-debian`
+- run: `apt update && apt install --assume-yes git && mkdir code && cd code && git clone https://github.com/spraza/setup-machine.git && ./setup-machine/setup-debian`
     - follow instructions
 - exit
 - locally, run: `scp ~/.ssh/id_rsa* spraza@<rootIp>:~/.ssh/`
