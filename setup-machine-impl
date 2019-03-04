@@ -60,6 +60,8 @@ cd $githubReposPath
     git clone https://github.com/jwiegley/emacs-async
     # https://github.com/syohex/emacs-helm-ag
     git clone https://github.com/syohex/emacs-helm-ag
+    # https://github.com/spraza/blog.git
+    git clone --recurse-submodules https://github.com/spraza/blog.git
     # # https://github.com/Andersbakken/rtags
     # git clone --recursive https://github.com/Andersbakken/rtags
 cd -
@@ -87,6 +89,10 @@ cd $githubReposPath
     # https://github.com/Andersbakken/rtags
     cd rtags
     git remote set-url origin git@github.com:Andersbakken/rtags.git
+    cd ..
+    # https://github.com/spraza/blog
+    cd blog
+    git remote set-url origin git@github.com:spraza/blog.git
     cd ..
 cd $githubReposPath
 
@@ -143,15 +149,13 @@ fi
 
 # install go
 cd ${appsPath}
-wget https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_Linux-64bit.tar.gz
-tar -C /usr/local/bin -xzf ${appsPath}/hugo_0.54.0_Linux-64bit.tar.gz
+wget https://dl.google.com/go/go1.12.linux-amd64.tar.gz
+tar -C /usr/local -xzf {appsPath}/go1.12.linux-amd64.tar.gz
 
 # install hugo
-cd $githubReposPath
-git clone https://github.com/gohugoio/hugo.git
-cd hugo
-go install --tags extended
-cd ~
+cd ${appsPath}
+wget https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_Linux-64bit.tar.gz
+tar -C /usr/local/bin -xzf ${appsPath}/hugo_0.54.0_Linux-64bit.tar.gz
 
 echo "Initial config done..."
 

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+githubReposPath=~/code/github-repos
+
+# setup my website and start webserver to host
+cd ${githubReposPath}/blog
+rm -rf public/
+hugo
+sudo ufw allow 1313
+hugo server --bind=0.0.0.0 --baseUrl=http://134.209.48.125/
