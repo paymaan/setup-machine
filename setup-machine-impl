@@ -60,8 +60,6 @@ cd $githubReposPath
     git clone https://github.com/jwiegley/emacs-async
     # https://github.com/syohex/emacs-helm-ag
     git clone https://github.com/syohex/emacs-helm-ag
-    # https://github.com/spraza/blog.git
-    git clone --recurse-submodules https://github.com/spraza/blog.git
     # # https://github.com/Andersbakken/rtags
     # git clone --recursive https://github.com/Andersbakken/rtags
 cd -
@@ -130,9 +128,12 @@ if ! [[ -f "$dotFilesRepoPath" ]]; then
 	# setup repo to use ssh for seamless pushing later
 	git remote set-url origin git@github.com:spraza/dotfiles.git
         # cp and make backup if overwriting
-	/bin/cp -fbr .* ~/
+	/bin/cp -fr .* ~/
     cd -
 fi
+
+# Start ssh-agent, if not already started
+eval $(ssh-agent)
 
 # install rtags
 # https://github.com/Andersbakken/rtags
@@ -156,6 +157,9 @@ tar -C /usr/local -xzf {appsPath}/go1.12.linux-amd64.tar.gz
 cd ${appsPath}
 wget https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_Linux-64bit.tar.gz
 tar -C /usr/local/bin -xzf ${appsPath}/hugo_0.54.0_Linux-64bit.tar.gz
+
+# setup blog repository
+git clone --recursive git@github.com:spraza/blog.git
 
 echo "Initial config done..."
 
