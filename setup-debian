@@ -23,7 +23,7 @@ scp <source> <destination>
 
 To copy a file from B to A while logged into B:
 
-scp ~/.ssh/id_rsa* spraza@<server_ip_addr>:~/.ssh/
+scp ~/.ssh/id_rsa* spraza@$(hostname -I | cut -d " " -f 1):~/.ssh/
 
 To copy a file from B to A while logged into A:
 
