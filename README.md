@@ -18,7 +18,7 @@ I've started using Digital Ocean. I decided to reuse my setup script to setup th
 - exit
 - locally, run: `scp ~/.ssh/id_rsa* spraza@<rootIp>:~/.ssh/`
 - then ssh into droplet as spraza
-- then run: `mkdir code && cd code && git clone https://github.com/spraza/setup-machine.git && sudo ~/code/setup-machine/setup-machine-impl`
+- then run: `mkdir code && cd code && git clone https://github.com/spraza/setup-machine.git && ~/code/setup-machine/setup-machine-impl`
 - that should be it! :)
 
 In order to start the webserver for my blog/website, run: 
