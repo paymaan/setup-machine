@@ -6,5 +6,5 @@ githubReposPath=~/code/github-repos
 cd ${githubReposPath}/blog
 rm -rf public/
 hugo
-sudo ufw allow 1313
-hugo server --bind=0.0.0.0 --baseUrl=http://$(hostname -I | cut -d " " -f 1)
+sudo ufw allow 80
+sudo hugo server -p 80 --bind=0.0.0.0 --baseUrl=http://spraza.com
