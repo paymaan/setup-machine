@@ -23,3 +23,4 @@ I've started using Digital Ocean. I decided to reuse my setup script to setup th
 
 In order to start the webserver for my blog/website, run: 
 - `~/code/setup-machine/start-website`
+- in a separate tmux pane, run: `cd ~/code/github-repos/blog && eval $(ssh-agent) && git pull origin master && watch -n 15 git pull origin master`
