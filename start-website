@@ -7,4 +7,4 @@ cd ${githubReposPath}/blog
 rm -rf public/
 hugo
 sudo ufw allow 80
-sudo hugo server -p 80 --bind=0.0.0.0 --baseUrl=http://spraza.com
+sudo hugo server -p 80 --bind=0.0.0.0 --baseUrl=http://www.spraza.com
